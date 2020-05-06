@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKlantTable extends Migration
+class CreateStatusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,9 @@ class CreateKlantTable extends Migration
      */
     public function up()
     {
-        Schema::create('user', function (Blueprint $table) {
+        Schema::create('status', function (Blueprint $table) {
             $table->id();
-            $table->string('voornaam');
-            $table->string('tussenvoegsel');
-            $table->string('achternaam');
-            $table->string('email');
-            $table->string('adres');
-            $table->string('postcode');
-            $table->string('plaats');
+            $table->string('status');
             $table->timestamps();
         });
     }
@@ -33,6 +27,6 @@ class CreateKlantTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user');
+        Schema::dropIfExists('status');
     }
 }

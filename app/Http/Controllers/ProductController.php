@@ -2,27 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Contracts\View\Factory;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class ProductsController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return Factory|View
      */
+
     public function index()
     {
-        return \view('producten.index');
+        $products = User::all();
+        return view('user.index', ['product' => $products]);
     }
 
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
