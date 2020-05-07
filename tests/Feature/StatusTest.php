@@ -2,6 +2,8 @@
 
 namespace Tests\Feature;
 
+use App\Status;
+use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -13,10 +15,15 @@ class StatusTest extends TestCase
      *
      * @return void
      */
-    public function testExample()
+    public function test_save_status_in_database()
     {
-        $response = $this->get('/');
+        $status = factory(Status::class)->make();
 
-        $response->assertStatus(200);
+
+        $this->assertDatabaseHas('statuses', [
+            'status' => $status->status,
+
+        ]);
     }
+
 }
