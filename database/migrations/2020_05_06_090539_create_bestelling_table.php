@@ -13,7 +13,7 @@ class CreateBestellingTable extends Migration
      */
     public function up()
     {
-        Schema::create('bestelling', function (Blueprint $table) {
+        Schema::create('bestellingen', function (Blueprint $table) {
             $table->id();
             $table->dateTime('besteldatum');
             $table->unsignedBigInteger('klantnummer');
@@ -22,10 +22,10 @@ class CreateBestellingTable extends Migration
             $table->unsignedBigInteger('vestiging');
             $table->timestamps();
 
-            $table->foreign('medewerkernummer')->references('id')->on('medewerker')->onDelete('cascade');;
-            $table->foreign('status')->references('id')->on('status')->onDelete('cascade');;
+            $table->foreign('medewerkernummer')->references('id')->on('medewerkers')->onDelete('cascade');;
+            $table->foreign('status')->references('id')->on('statuses')->onDelete('cascade');;
             $table->foreign('klantnummer')->references('id')->on('users')->onDelete('cascade');;
-            $table->foreign('vestiging')->references('id')->on('vestiging')->onDelete('cascade');;
+            $table->foreign('vestiging')->references('id')->on('vestigingen')->onDelete('cascade');;
         });
     }
 

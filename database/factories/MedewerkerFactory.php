@@ -10,7 +10,6 @@ $factory->define(Medewerker::class, function (Faker $faker) {
         'voornaam' => $faker->name,
         'tussenvoegsel' => " ",
         'achternaam' => $faker->lastName,
-        'voornaam' => $faker->name,
-        'vestigingsnummer' => factory(\App\Vestiging::class)->create()
+        'vestigingnummer' => factory(\App\Vestiging::class)->create()
     ];
 });

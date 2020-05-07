@@ -15,11 +15,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('producten', 'ProductController');
-Route::resource('user', 'UserController');
+Route::resource('bestellingen', 'BestellingController');
+Route::resource('user', "UserController");

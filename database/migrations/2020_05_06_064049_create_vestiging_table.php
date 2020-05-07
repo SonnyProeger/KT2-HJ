@@ -13,7 +13,7 @@ class CreateVestigingTable extends Migration
      */
     public function up()
     {
-        Schema::create('vestiging', function (Blueprint $table) {
+        Schema::create('vestigingen', function (Blueprint $table) {
             $table->id();
             $table->string('omschrijving');
             $table->string('adres');

@@ -13,15 +13,15 @@ class CreateMedewerkerTable extends Migration
      */
     public function up()
     {
-        Schema::create('medewerker', function (Blueprint $table) {
+        Schema::create('medewerkers', function (Blueprint $table) {
             $table->id();
             $table->string('voornaam');
             $table->string('tussenvoegsel')->nullable();
             $table->string('achternaam');
-            $table->unsignedBigInteger('vestigingsnummer');
+            $table->unsignedBigInteger('vestigingnummer');
             $table->timestamps();
 
-            $table->foreign('vestigingsnummer')->references('id')->on('vestiging')->onDelete('cascade');;
+            $table->foreign('vestigingnummer')->references('id')->on('vestigingen')->onDelete('cascade');;
 
         });
     }

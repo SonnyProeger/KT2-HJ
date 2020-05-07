@@ -3,14 +3,18 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Bestelling;
+use App\Medewerker;
+use App\Status;
+use App\User;
+use App\Vestiging;
 use Faker\Generator as Faker;
 
 $factory->define(Bestelling::class, function (Faker $faker) {
     return [
-        'besteldatum' => $faker->dateTime,
-        'klantnummer' => factory(\App\User::class)->create(),
-        'status' => factory(\App\Status::class)->create(),
-        'vestigingsnummer' => factory(\App\Vestiging::class)->create(),
-        'medewerkernummer' => factory(\App\Medewerker::class)->create(),
+        'besteldatum' => $faker->dateTime(),
+        'klantnummer' => factory(User::class)->create(),
+        'status' => factory(Status::class)->create(),
+        'vestiging' => factory(Vestiging::class)->create(),
+        'medewerkernummer' => factory(Medewerker::class)->create(),
     ];
 });

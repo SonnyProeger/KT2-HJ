@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\Product;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\View\View;
 
@@ -16,8 +16,8 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = User::all();
-        return view('user.index', ['product' => $products]);
+        $products = Product::all();
+        return view('producten.index', ['product' => $products]);
     }
 
 
