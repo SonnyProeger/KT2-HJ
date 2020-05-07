@@ -11,12 +11,12 @@ class Vestiging extends Model
         'omschrijving', 'adres', 'postcode', 'plaats'
     ];
 
-    public function Medewerker()
+    public function medewerker()
     {
         return $this->hasMany(Medewerker::class);
     }
 
-    public function Bestelling()
+    public function bestelling()
     {
         return $this->hasMany(Bestelling::class);
     }

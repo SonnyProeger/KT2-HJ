@@ -16,16 +16,16 @@ class CreateBestellingTable extends Migration
         Schema::create('bestellingen', function (Blueprint $table) {
             $table->id();
             $table->dateTime('besteldatum');
-            $table->unsignedBigInteger('klantnummer');
-            $table->unsignedBigInteger('status');
-            $table->unsignedBigInteger('medewerkernummer');
-            $table->unsignedBigInteger('vestiging');
+            $table->unsignedBigInteger('medewerkers_id');
+            $table->unsignedBigInteger('status_id');
+            $table->unsignedBigInteger('users_id');
+            $table->unsignedBigInteger('vestigingen_id');
             $table->timestamps();
 
-            $table->foreign('medewerkernummer')->references('id')->on('medewerkers')->onDelete('cascade');;
-            $table->foreign('status')->references('id')->on('statuses')->onDelete('cascade');;
-            $table->foreign('klantnummer')->references('id')->on('users')->onDelete('cascade');;
-            $table->foreign('vestiging')->references('id')->on('vestigingen')->onDelete('cascade');;
+            $table->foreign('medewerkers_id')->references('id')->on('medewerkers')->onDelete('cascade');;
+            $table->foreign('status_id')->references('id')->on('statuses')->onDelete('cascade');;
+            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');;
+            $table->foreign('vestigingen_id')->references('id')->on('vestigingen')->onDelete('cascade');;
         });
     }
 
@@ -36,6 +36,6 @@ class CreateBestellingTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bestelling');
+        Schema::drop('bestellingen');
     }
 }

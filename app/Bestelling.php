@@ -9,31 +9,41 @@ class Bestelling extends Model
     protected $table = "bestellingen";
     protected $guarded = ['id'];
     protected $fillable = [
-        'besteldatum', 'status', 'medewerkernummer', 'vestiging',
+        'besteldatum', 'status_id', 'medewerkers_id', 'vestigingen_id', 'users_id',
     ];
 
-    public function User()
+    public function user()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class, 'users_id');
     }
 
-    public function Medewerker()
+    public function medewerker()
     {
-        return $this->hasOne(Medewerker::class);
+        return $this->belongsTo(Medewerker::class);
     }
 
-    public function Vestiging()
+    public function vestiging()
     {
-        return $this->hasOne(Vestiging::class);
+        return $this->belongsTo(Vestiging::class, 'vestigingen_id');
     }
 
-    public function Status()
+    public function status()
     {
-        return $this->hasOne(Status::class);
+        return $this->belongsTo(Status::class);
     }
 
-    public function Bestelregel()
+    public function bestelregel()
     {
-        return $this->hasOne(Bestelregel::class);
+        return $this->hasMany(Bestelregel::class, 'bestellingen_id');
+    }
+
+    public function totalPrice()
+    {
+        $totalPrice = 0;
+        foreach ($this->bestelregel as $bestelRegel) {
+            $totalPrice = $totalPrice + ($bestelRegel->aantal * $bestelRegel->product->prijs);
+        }
+
+        return $totalPrice;
     }
 }

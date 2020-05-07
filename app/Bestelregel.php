@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Bestelregel extends Model
 {
     protected $table = "bestelregels";
-    protected $fillable = ["bestelnummer", 'productnummer', 'aantal'];
+    protected $fillable = ["bestellingen_id", 'products_id', 'aantal'];
 
-    public function Product()
+    public function product()
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsTo(Product::class, 'products_id');
     }
 
-    public function Bestelling()
+    public function bestelling()
     {
         return $this->hasMany(Bestelling::class);
     }

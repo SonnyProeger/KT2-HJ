@@ -4,10 +4,11 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -36,8 +37,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function Bestelling()
+    public function orders()
     {
-        return $this->hasMany(Bestelling::class);
+        return $this->hasMany(Bestelling::class, 'users_id', 'id');
+    }
+
+    public function hasOrders()
+    {
+        return ($this->orders->count() > 0);
     }
 }

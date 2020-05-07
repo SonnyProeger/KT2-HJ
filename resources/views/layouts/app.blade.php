@@ -37,8 +37,8 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
                     <a class="nav-link" href="/">Invoer Gegevens</a>
-                    <a class="nav-link" href="/producten">Bestellingen(shop)</a>
-                    <a class="nav-link" href="/bestellingen">Overzicht Orders</a>
+                    <a class="nav-link" href="{{route('product.index')}}">Bestellingen(shop)</a>
+                    <a class="nav-link" href="{{route('bestelling.index')}}">Overzicht Orders</a>
 
                 </ul>
 

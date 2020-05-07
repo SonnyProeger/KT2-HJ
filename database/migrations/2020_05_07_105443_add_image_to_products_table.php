@@ -14,7 +14,7 @@ class AddImageToProductsTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            //
+            $table->string('image_path')->nullable()->after('omschrijving');
         });
     }
 

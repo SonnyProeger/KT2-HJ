@@ -11,8 +11,8 @@ class Product extends Model
         'omschrijving', 'prijs',
     ];
 
-    public function Bestelregel()
+    public function bestelregel()
     {
-        return $this->hasOne(Bestelregel::class);
+        return $this->belongsTo(Bestelregel::class);
     }
 }

@@ -9,8 +9,8 @@ use Faker\Generator as Faker;
 
 $factory->define(Bestelregel::class, function (Faker $faker) {
     return [
-        'bestelnummer' => factory(Bestelling::class)->create(),
-        'productnummer' => factory(Product::class)->create(),
+        'bestellingen_id' => factory(Bestelling::class)->create(),
+        'products_id' => factory(Product::class)->create(),
         'aantal' => '3',
     ];
 });

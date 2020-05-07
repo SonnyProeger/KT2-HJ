@@ -23,7 +23,7 @@ class MedewerkerTest extends TestCase
             'voornaam' => $medewerker->voornaam,
             'tussenvoegsel' => $medewerker->tussenvoegsel,
             'achternaam' => $medewerker->achternaam,
-            'vestigingnummer' => $medewerker->vestigingnummer,
+            'vestigingen_id' => $medewerker->vestigingen_id,
         ]);
     }
 

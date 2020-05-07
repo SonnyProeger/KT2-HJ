@@ -11,7 +11,7 @@ class Status extends Model
         'Status',
     ];
 
-    public function Bestelling()
+    public function bestelling()
     {
         return $this->hasMany(Bestelling::class);
     }

@@ -14,12 +14,12 @@ class CreateBestelregelTable extends Migration
     public function up()
     {
         Schema::create('bestelregels', function (Blueprint $table) {
-            $table->unsignedBigInteger("bestelnummer");
-            $table->unsignedBigInteger('productnummer');
+            $table->unsignedBigInteger("bestellingen_id");
+            $table->unsignedBigInteger('products_id');
             $table->integer('aantal');
             $table->timestamps();
-            $table->foreign('bestelnummer')->references('id')->on('bestellingen')->onDelete('cascade');;
-            $table->foreign('productnummer')->references('id')->on('products')->onDelete('cascade');;
+            $table->foreign('bestellingen_id')->references('id')->on('bestellingen')->onDelete('cascade');;
+            $table->foreign('products_id')->references('id')->on('products')->onDelete('cascade');;
         });
     }
 
@@ -30,6 +30,6 @@ class CreateBestelregelTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bestelregels');
+        Schema::drop('bestelregels');
     }
 }

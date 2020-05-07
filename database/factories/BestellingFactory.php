@@ -10,11 +10,12 @@ use App\Vestiging;
 use Faker\Generator as Faker;
 
 $factory->define(Bestelling::class, function (Faker $faker) {
+    $mdw = factory(Medewerker::class)->create();
     return [
         'besteldatum' => $faker->dateTime(),
-        'klantnummer' => factory(User::class)->create(),
-        'status' => factory(Status::class)->create(),
-        'vestiging' => factory(Vestiging::class)->create(),
-        'medewerkernummer' => factory(Medewerker::class)->create(),
+        'users_id' => factory(User::class)->create(),
+        'status_id' => factory(Status::class)->create(),
+        'vestigingen_id' => factory(Vestiging::class)->create(),
+        'medewerkers_id' => $mdw->getKey()
     ];
 });

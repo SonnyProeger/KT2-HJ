@@ -7,6 +7,17 @@ use Illuminate\Http\Request;
 
 class BestelregelController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -30,7 +41,7 @@ class BestelregelController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -41,7 +52,7 @@ class BestelregelController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Bestelregel  $bestelregel
+     * @param \App\Bestelregel $bestelregel
      * @return \Illuminate\Http\Response
      */
     public function show(Bestelregel $bestelregel)
@@ -52,7 +63,7 @@ class BestelregelController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Bestelregel  $bestelregel
+     * @param \App\Bestelregel $bestelregel
      * @return \Illuminate\Http\Response
      */
     public function edit(Bestelregel $bestelregel)
@@ -63,8 +74,8 @@ class BestelregelController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Bestelregel  $bestelregel
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Bestelregel $bestelregel
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Bestelregel $bestelregel)
@@ -75,7 +86,7 @@ class BestelregelController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Bestelregel  $bestelregel
+     * @param \App\Bestelregel $bestelregel
      * @return \Illuminate\Http\Response
      */
     public function destroy(Bestelregel $bestelregel)

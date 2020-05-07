@@ -21,8 +21,8 @@ class BestelregelTest extends TestCase
         $bestelregel = factory(Bestelregel::class)->create();
 
         $this->assertDatabaseHas('bestelregels', [
-            'bestelnummer' => $bestelregel->bestelnummer,
-            'productnummer' => $bestelregel->productnummer,
+            'bestellingen_id' => $bestelregel->bestellingen_id,
+            'products_id' => $bestelregel->products_id,
             'aantal' => $bestelregel->aantal,
 
         ]);

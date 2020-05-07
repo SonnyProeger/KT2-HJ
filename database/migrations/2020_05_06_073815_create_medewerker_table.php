@@ -18,10 +18,10 @@ class CreateMedewerkerTable extends Migration
             $table->string('voornaam');
             $table->string('tussenvoegsel')->nullable();
             $table->string('achternaam');
-            $table->unsignedBigInteger('vestigingnummer');
+            $table->unsignedBigInteger('vestigingen_id');
             $table->timestamps();
 
-            $table->foreign('vestigingnummer')->references('id')->on('vestigingen')->onDelete('cascade');;
+            $table->foreign('vestigingen_id')->references('id')->on('vestigingen')->onDelete('cascade');;
 
         });
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class ProductController extends Controller
@@ -14,22 +15,46 @@ class ProductController extends Controller
      * @return Factory|View
      */
 
-    public function index()
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
     {
-        $products = Product::all();
-        return view('producten.index', ['product' => $products]);
+        $this->middleware('auth');
+    }
+
+    public function index(Request $request)
+    {
+        $products = Product::query();
+        $direction = $request->input('direction', 'DESC');
+
+        if ($request->has('sort') && in_array($request->input('sort'), ['id', 'omschrijving'])) {
+            $products->orderBy($request->input('sort'), $direction);
+        }
+
+        if ($direction === 'ASC') {
+            $direction = 'DESC';
+        } else {
+            $direction = 'ASC';
+        }
+
+        $products = $products->get();
+
+        return view('producten.index', compact('products', 'direction'));
     }
 
 
     /**
      * Display the specified resource.
      *
-     * @param int $id
+     * @param Product $product
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        return \view('producten.show');
+        return \view('producten.show', ['product' => $product]);
     }
 
 

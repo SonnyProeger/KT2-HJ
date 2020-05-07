@@ -19,10 +19,10 @@ class BestellingTest extends TestCase
 
         $this->assertDatabaseHas('bestellingen', [
             'besteldatum' => $bestelling->besteldatum,
-            'klantnummer' => $bestelling->klantnummer,
-            'status' => $bestelling->status,
-            'vestiging' => $bestelling->vestiging,
-            'medewerkernummer' => $bestelling->medewerkernummer,
+            'users_id' => $bestelling->users_id,
+            'status_id' => $bestelling->status_id,
+            'vestigingen_id' => $bestelling->vestigingen_id,
+            'medewerkers_id' => $bestelling->medewerkers_id,
         ]);
 
     }

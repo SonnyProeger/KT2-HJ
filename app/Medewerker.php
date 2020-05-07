@@ -8,16 +8,16 @@ class Medewerker extends Model
 {
     protected $table = "Medewerkers";
     protected $fillable = [
-        'voornaam', 'tussenvoegsel', 'achternaam', 'vestigingsnummer',
+        'voornaam', 'tussenvoegsel', 'achternaam', 'vestigingen_id',
     ];
 
-    public function Bestelling()
+    public function bestelling()
     {
         return $this->hasMany(Bestelling::class);
     }
 
-    public function Vestiging()
+    public function vestiging()
     {
-        return $this->hasOne(Vestiging::class);
+        return $this->belongsTo(Vestiging::class);
     }
 }

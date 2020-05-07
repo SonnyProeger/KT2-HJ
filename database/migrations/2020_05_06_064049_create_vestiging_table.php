@@ -30,6 +30,6 @@ class CreateVestigingTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vestiging');
+        Schema::drop('vestigingen');
     }
 }
