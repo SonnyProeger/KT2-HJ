@@ -8,9 +8,11 @@ use App\Product;
 use Faker\Generator as Faker;
 
 $factory->define(Bestelregel::class, function (Faker $faker) {
+    $bestelling = factory(Bestelling::class)->create();
+
     return [
-        'bestellingen_id' => factory(Bestelling::class)->create(),
-        'products_id' => factory(Product::class)->create(),
-        'aantal' => '3',
+        'bestellingen_id' => $bestelling->getKey(),
+        'products_id' => rand(1, 3),
+        'aantal' => rand(1, 7),
     ];
 });

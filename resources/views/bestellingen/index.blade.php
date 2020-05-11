@@ -27,7 +27,7 @@
                     </td>
                     <td class="d-md-table-cell">{{$bestelling->vestiging->omschrijving}}</td>
 
-                    <td class="d-md-table-cell">{{$bestelling->totalPrice()}}</td>
+                    <td class="d-md-table-cell">&euro;{{$bestelling->totalPrice()}}</td>
                     <td class="d-md-table-cell">{{$bestelling->status->status}}</td>
                     <td class="d-md-table-cell">{{$bestelling->besteldatum}}</td>
                 </tr>

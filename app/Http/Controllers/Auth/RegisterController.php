@@ -57,7 +57,10 @@ class RegisterController extends Controller
             'woonplaats' => ['required', 'string', 'max:45'],
             'postcode' => ['required', 'string', 'max:6'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'confirmed',
+                'min:6',             // must be at least 6 characters in length
+                'regex:/[0-9]/',      // must contain at least one digit
+            ],
         ]);
     }
 

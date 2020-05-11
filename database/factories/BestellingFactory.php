@@ -14,8 +14,8 @@ $factory->define(Bestelling::class, function (Faker $faker) {
     return [
         'besteldatum' => $faker->dateTime(),
         'users_id' => factory(User::class)->create(),
-        'status_id' => factory(Status::class)->create(),
-        'vestigingen_id' => factory(Vestiging::class)->create(),
+        'status_id' => rand(1, 3),
+        'vestigingen_id' => rand(1, 2),
         'medewerkers_id' => $mdw->getKey()
     ];
 });

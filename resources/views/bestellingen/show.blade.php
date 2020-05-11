@@ -11,7 +11,7 @@
 
             Klant / Afleveradres <br>
 
-            {{$bestelling->user->naam}}<br>
+            {{$bestelling->user->voornaam}}{{$bestelling->user->achternaam}}<br>
             {{$bestelling->user->adres}}<br>
             {{$bestelling->user->postcode}} {{$bestelling->user->woonplaats}}
         </div>
@@ -31,8 +31,8 @@
                     <td class="d-md-table-cell">{{$orderLines->product->id }}</td>
                     <td class="d-md-table-cell">{{ $orderLines->product->omschrijving }}</td>
                     <td class="d-md-table-cell">{{$orderLines->aantal}}</td>
-                    <td class="d-md-table-cell">{{ $orderLines->product->prijs }}</td>
-                    <td class="d-md-table-cell">{{$orderLines->aantal * $orderLines->product->prijs}}</td>
+                    <td class="d-md-table-cell">&euro;{{ $orderLines->product->prijs }}</td>
+                    <td class="d-md-table-cell">&euro;{{$orderLines->aantal * $orderLines->product->prijs}}</td>
                 </tr>
             @endforeach
             </tbody>

@@ -49,7 +49,7 @@ class BestellingController extends Controller
     public function show(Bestelling $bestelling)
     {
         if (Auth::user()->can('view-all-orders') === false) {
-            abort_if($bestelling->user_id !== Auth::user()->getKey(), 403, 'This action is unauthorized.');
+            abort_if($bestelling->users_id !== Auth::user()->getKey(), 403, 'This action is unauthorized.');
         }
 
         return view('bestellingen.show', [
