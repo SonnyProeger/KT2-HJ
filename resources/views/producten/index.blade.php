@@ -11,7 +11,8 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <strong>Productnummer:</strong> {{$product->getKey()}}<br/>
-                                        <strong>Omschrijving:</strong><br/> {{$product->omschrijving}}
+                                        <strong>Omschrijving:</strong><br/> {{$product->omschrijving}}<br>
+                                        <strong>Leverdatum</strong><br/>{{$product->delivery}}
                                     </div>
                                     <div class="col-md-6">
                                         <img src="{{asset($product->image_path)}}" class="img-fluid mb-1"
@@ -32,6 +33,8 @@
                     <a href="{{route('product.index', ['sort' => 'omschrijving', 'direction' => $direction])}}"
                        class="nav-link">Omschrijving</a>
                     <a href="{{route('product.index', ['sort' => 'id', 'direction' => $direction])}}" class="nav-link">Productnummer</a>
+                    <a href="{{route('product.index', ['sort' => 'delivery', 'direction' => $direction])}}"
+                       class="nav-link">Leverdatum</a>
                 </div>
             </div>
         </div>

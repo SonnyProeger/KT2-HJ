@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\View\View;
 
 class ProductController extends Controller
@@ -14,6 +15,10 @@ class ProductController extends Controller
      *
      * @return Factory|View
      */
+
+    protected $sortMap = [
+        'binnen 4 weken', 'binnen 5-7 werkdagen', 'op voorraad'
+    ];
 
     /**
      * Create a new controller instance.
@@ -27,20 +32,29 @@ class ProductController extends Controller
 
     public function index(Request $request)
     {
-        $products = Product::query();
+        $builder = Product::query();
         $direction = $request->input('direction', 'DESC');
 
+
         if ($request->has('sort') && in_array($request->input('sort'), ['id', 'omschrijving'])) {
-            $products->orderBy($request->input('sort'), $direction);
+            $builder->orderBy($request->input('sort'), $direction);
         }
 
-        if ($direction === 'ASC') {
-            $direction = 'DESC';
-        } else {
-            $direction = 'ASC';
+        $direction = ($direction === 'ASC') ? 'DESC' : 'ASC';
+
+        /** @var Collection $products */
+        $products = $builder->get()->map(function ($product) {
+            $delivery = str_replace('-', '', str_replace(' ', '', strtolower($product->delivery)));
+            $product->delivery_order = array_search($delivery, collect($this->sortMap)->map(function ($item) {
+                return str_replace('-', '', str_replace(' ', '', strtolower($item)));
+            })->toArray(), true);
+            return $product;
+        });
+
+        if ($request->input('sort') === 'delivery') {
+            $products = ($direction === 'ASC') ? $products->sortBy('delivery_order') : $products->sortByDesc('delivery_order');
         }
 
-        $products = $products->get();
 
         return view('producten.index', compact('products', 'direction'));
     }

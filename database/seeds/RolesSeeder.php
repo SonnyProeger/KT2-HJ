@@ -24,22 +24,26 @@ class RolesSeeder extends Seeder
         App\Product::query()->firstOrCreate([
             'omschrijving' => 'Artisto veevoer',
             'prijs' => 67,
-            'image_path' => 'images/veevoer.jpg'
+            'image_path' => 'images/veevoer.jpg',
+            'delivery' => 'binnen 4 weken'
         ]);
         App\Product::query()->firstOrCreate([
             'omschrijving' => 'Schroeven 5mm / 2 kg',
             'prijs' => 11,
-            'image_path' => 'images/schroeven.jpg'
+            'image_path' => 'images/schroeven.jpg',
+            'delivery' => 'binnen 5-7 werkdagen'
         ]);
         App\Product::query()->firstOrCreate([
             'omschrijving' => 'Sojavlokken',
             'prijs' => 35,
-            'image_path' => 'images/sojavlokken.jpg'
+            'image_path' => 'images/sojavlokken.jpg',
+            'delivery' => 'op voorraad'
         ]);
         App\Product::query()->firstOrCreate([
             'omschrijving' => 'Snacks gevogelte',
             'prijs' => 55,
-            'image_path' => 'images/gevogelte.jpg'
+            'image_path' => 'images/gevogelte.jpg',
+            'delivery' => 'binnen 4 weken'
         ]);
 
         App\Vestiging::query()->firstOrCreate([
